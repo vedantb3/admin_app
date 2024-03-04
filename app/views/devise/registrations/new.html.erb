@@ -1,0 +1,61 @@
+<main>
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+            <div class="d-flex justify-content-center py-4">
+              <%= link_to root_path, class: "logo d-flex align-items-center w-auto" do %>
+                <%= image_tag "logo.png", alt: "" %>
+                <span class="d-none d-lg-block">NiceAdmin</span>
+              <% end %>
+            </div><!-- End Logo -->
+
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Sign up for an Account</h5>
+                  <p class="text-center small">Enter your details to create an account</p>
+                </div>
+
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "row g-3 needs-validation" }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+
+                  <div class="col-12">
+                    <%= f.label :email, class: "form-label" %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+                  </div>
+
+                  <div class="col-12">
+                    <%= f.label :password, class: "form-label" %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", required: true %>
+                  </div>
+
+                  <div class="col-12">
+                    <%= f.label :password_confirmation, class: "form-label" %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", required: true %>
+                  </div>
+
+                  <div class="col-12">
+                    <%= f.submit "Sign up", class: "btn btn-primary w-100" %>
+                  </div>
+                <% end %>
+
+                <div class="col-12">
+                  <p class="small mb-0">Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main>
